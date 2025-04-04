@@ -1,0 +1,84 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+const tournaments = [
+  {
+    type: "Solo",
+    entry: "₹10",
+    reward: "Up to ₹30",
+  },
+  {
+    type: "Duo",
+    entry: "₹20",
+    reward: "Up to ₹70",
+  },
+  {
+    type: "Squad",
+    entry: "₹25",
+    reward: "Up to ₹100",
+  },
+  {
+    type: "Clash Squad (4v4)",
+    entry: "₹100",
+    reward: "Custom Match Rewards",
+  },
+];
+
+export default function Home() {
+  return (
+    <main className="p-6 md:p-10 bg-gradient-to-br from-black via-zinc-900 to-black min-h-screen text-white">
+      <h1 className="text-4xl font-bold text-center mb-8 text-yellow-400">🔥 Warriors Arena ⚔️</h1>
+      <p className="text-center text-lg mb-4 text-gray-300">Ultimate Free Fire Tournaments Platform</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {tournaments.map((t, i) => (
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            key={i}
+          >
+            <Card className="bg-white/10 border-white/20 border shadow-xl rounded-2xl p-4">
+              <CardContent>
+                <h2 className="text-xl font-bold text-yellow-300">{t.type}</h2>
+                <p className="mt-2 text-sm">Entry Fee: <span className="text-green-400 font-semibold">{t.entry}</span></p>
+                <p className="text-sm">Rewards: <span className="text-pink-400 font-semibold">{t.reward}</span></p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      <section className="mt-16 max-w-3xl mx-auto">
+        <h3 className="text-2xl font-bold text-center text-yellow-300 mb-4">📥 Register Now</h3>
+        <div className="bg-white/5 p-6 rounded-xl space-y-4 shadow-md">
+          <Input placeholder="Your Name" className="bg-white/10 border-white/20" />
+          <Input placeholder="Your UPI ID or Mobile Number" className="bg-white/10 border-white/20" />
+          <Input placeholder="Tournament Type (Solo/Duo/etc)" className="bg-white/10 border-white/20" />
+          <Textarea placeholder="Message or Questions" className="bg-white/10 border-white/20" />
+          <Button className="w-full bg-yellow-500 hover:bg-yellow-600">Submit</Button>
+        </div>
+      </section>
+
+      <section className="mt-20">
+        <h2 className="text-2xl font-bold text-yellow-400 text-center mb-6">⚙️ Features</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center text-sm md:text-base">
+          <li className="bg-white/10 p-4 rounded-xl">✅ Low Entry – High Rewards</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Secure Payment & Instant Withdrawal</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Live Participant Count & Match Updates</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Admin Dashboard for Easy Management</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Telegram & WhatsApp Group Integration</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Auto-updating Leaderboard</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Upcoming Matches Section</li>
+          <li className="bg-white/10 p-4 rounded-xl">✅ Mobile & PC Friendly UI</li>
+        </ul>
+      </section>
+
+      <footer className="mt-20 text-center text-xs text-gray-400">
+        © 2025 Warriors Arena. All rights reserved.
+      </footer>
+    </main>
+  );
+}
