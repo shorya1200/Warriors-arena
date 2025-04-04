@@ -1,0 +1,78 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+
+export default function HomePage() {
+  const [tournaments, setTournaments] = useState([
+    {
+      id: 1,
+      title: "Solo - ₹10 Entry",
+      rewards: "₹30 Win | ₹7 per Kill",
+    },
+    {
+      id: 2,
+      title: "Duo - ₹20 Entry",
+      rewards: "₹70 Win | ₹15 per Kill",
+    },
+    {
+      id: 3,
+      title: "Squad - ₹80 Entry",
+      rewards: "₹120 Win | ₹21 per Kill",
+    },
+    {
+      id: 4,
+      title: "Clash Squad 4v4 - ₹100 Entry",
+      rewards: "7 Rounds | High Stakes",
+    },
+  ]);
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white p-6">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-4xl font-bold text-center mb-10"
+      >
+        ⚔️ Warriors Arena - Free Fire Tournaments ⚔️
+      </motion.h1>
+
+      <section className="grid md:grid-cols-2 gap-6">
+        {tournaments.map((t) => (
+          <Card key={t.id} className="bg-white/10 border border-white/20 rounded-2xl shadow-xl">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-2">{t.title}</h2>
+              <p className="text-sm text-gray-300 mb-4">{t.rewards}</p>
+              <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold">Join Now</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section className="mt-10 max-w-xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-2xl font-bold mb-4 text-center"
+        >
+          📩 Register for Tournaments
+        </motion.h2>
+        <div className="flex flex-col gap-4">
+          <Input placeholder="Your Name" />
+          <Input placeholder="Mobile Number / UPI ID" />
+          <Input placeholder="Tournament ID or Name" />
+          <Button className="bg-green-500 hover:bg-green-600 font-semibold text-white">Register</Button>
+        </div>
+      </section>
+
+      <section className="mt-16 text-center">
+        <p className="text-sm text-gray-400">
+          Secure Payments | Instant Withdrawals | Fair Play Guaranteed
+        </p>
+      </section>
+    </main>
+  );
+}
